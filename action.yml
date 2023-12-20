@@ -4,7 +4,7 @@ inputs:
   test-file-directory:
     description: 'Where the test files are located'
     required: true
-  test-file-extenstion: 
+  test-file-extension: 
     description: 'The extension of the test files (e.g. cwl ; not .cwl) '
     required: true
   inputs-file-extension: 
@@ -18,7 +18,7 @@ runs:
   - uses: actions/checkout@v3
   - id: set-matrix
     run: |
-      echo "tests-matrix=$(ls ${{ inputs.test-file-directory }} /*.${{ inputs.test-file-extenstion }} | jq -R -s -c 'split("\n")[:-1] | map([., (sub("\\.${{ inputs.test-file-extenstion }}$"; ".${{ inputs.inputs-file-extenstion }}"))])')"  >> "$GITHUB_OUTPUT"
+      echo "tests-matrix=$(ls ${{ inputs.test-file-directory }} /*.${{ inputs.test-file-extension }} | jq -R -s -c 'split("\n")[:-1] | map([., (sub("\\.${{ inputs.test-file-extension }}$"; ".${{ inputs.inputs-file-extenstion }}"))])')"  >> "$GITHUB_OUTPUT"
   - name: Show matrix
     run: |
       echo ${{ steps.set-matrix.outputs.tests-matrix }}
