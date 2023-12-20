@@ -11,7 +11,9 @@ inputs:
     description: 'The extension of the input manifest (to replace the extension of the test files, e.g. yml ; not .yml).'
     required: true
 outputs:
-  tests-matrix: ${{ steps.set-matrix.outputs.tests-matrix }}
+  tests-matrix: 
+    description: 'The matrix of test files and input manifests'
+    value: ${{ steps.set-matrix.outputs.tests-matrix }}
 runs:
   using: "composite"
   steps:
