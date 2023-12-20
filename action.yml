@@ -20,7 +20,7 @@ runs:
   - uses: actions/checkout@v3
   - id: set-matrix
     run: |
-      echo "tests-matrix=$(ls ${{ inputs.test-file-directory }} /*.${{ inputs.test-file-extension }} | jq -R -s -c 'split("\n")[:-1] | map([., (sub("\\.${{ inputs.test-file-extension }}$"; ".${{ inputs.inputs-file-extenstion }}"))])')"  >> "$GITHUB_OUTPUT"
+      echo "tests-matrix=$(ls ${{ inputs.test-file-directory }}/*.${{ inputs.test-file-extension }} | jq -R -s -c 'split("\n")[:-1] | map([., (sub("\\.${{ inputs.test-file-extension }}$"; ".${{ inputs.inputs-file-extension }}"))])')"  >> "$GITHUB_OUTPUT"
     shell: bash  
   - name: Show matrix
     shell: bash
